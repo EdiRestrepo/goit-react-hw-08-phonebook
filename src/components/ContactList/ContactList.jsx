@@ -1,16 +1,21 @@
-import { selectAllContacts, SelectFilter } from "../../redux/selectors";
-import { deleteContact } from "../../redux/operations";
+// import { selectAllContacts, SelectFilter } from "../../redux/selectors";
+// import { deleteContact } from "../../redux/operations";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import css from "./ContactList.module.css";
 import { IconButton } from "@mui/material";
 import { useEffect } from "react";
-import { fetchContacts } from "../../redux/operations";
+import { selectContacts, selectVisibleContacts } from "../../redux/contacts/selectorContacts";
+import { deleteContact, fetchContacts } from "../../redux/contacts/contactOperations";
+import { SelectFilter } from "../../redux/filter/selectorFilter";
+// import { fetchContacts } from "../../redux/operations";
 
 export const ContactList = () => {
-  const contacts = useSelector(selectAllContacts);
+  // const visibleContacts = useSelector(selectVisibleContacts);
+  const contacts = useSelector(selectContacts);
   const filter = useSelector(SelectFilter);
   const dispatch = useDispatch();
+  // const contacts = []
 
   const deleteId = (contacts) => {
     dispatch(deleteContact(contacts));
@@ -28,11 +33,11 @@ export const ContactList = () => {
   return (
     <div>
       <ul>
-        {filterArr(contacts)?.map(({ name, phone, id }) => {
+        {filterArr(contacts)?.map(({ name, number, id }) => {
           return (
             <div className={css["container-contact"]} key={id}>
               <li>
-                {name}: {phone}
+                {name}: {number}
               </li>
               <IconButton
                 className={css["delete-contact"]}

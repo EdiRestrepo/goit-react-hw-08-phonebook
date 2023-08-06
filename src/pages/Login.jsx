@@ -1,4 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuthLoading } from "../redux/auth/selectorauth";
+import { login } from "../redux/auth/operationsAuth";
+import { Notify } from "notiflix";
 // import { clearError, clearFormError, setFormError } from "../redux/auth/slice";
 // import { login } from "../redux/auth/operations";
 // import { useEffect } from "react";
@@ -6,7 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const dispatch = useDispatch();
-//   const { formError, error, isLoading } = useSelector((state) => state.auth);
+  const isLoading = useSelector(selectIsAuthLoading);
+  // const { formError, error, isLoading } = useSelector((state) => state.auth);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,27 +20,28 @@ const Login = () => {
       password: password.value,
     };
 
-    // if (email.value && password.value) {
-    //   dispatch(login(credentials));
-    // } else {
-    //   dispatch(setFormError("Verify the provided info and try again."));
-    // }
+    if (email.value && password.value) {
+      dispatch(login(credentials));
+      Notify.success("Congrats You have been logged");
+    } else {
+      Notify.failure("Verify the provided info and try again.");
+    }
     console.log(credentials);
   };
 
-//   useEffect(() => {
-//     if (formError) {
-//       toast.error(formError);
-//       dispatch(clearFormError());
-//     }
-//   }, [dispatch, formError]);
+  // useEffect(() => {
+  //   if (formError) {
+  //     toast.error(formError);
+  //     dispatch(clearFormError());
+  //   }
+  // }, [dispatch, formError]);
 
-//   useEffect(() => {
-//     if (error) {
-//       toast.error(error);
-//       dispatch(clearError());
-//     }
-//   }, [dispatch, error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //     dispatch(clearError());
+  //   }
+  // }, [dispatch, error]);
 
   return (
     <div
@@ -70,10 +75,8 @@ const Login = () => {
           Password
           <input type="password" name="password" />
         </label>
-        {/* <button type="submit" style={{ marginTop: 20 }} disabled={isLoading}> */}
-        <button type="submit" style={{ marginTop: 20 }} >
-                  {/* {isLoading ? "Loading..." : "Send"} */}
-                  Enviar
+        <button type="submit" style={{ marginTop: 20 }} disabled={isLoading}>
+          {isLoading ? "Loading..." : "Send"}
         </button>
       </form>
     </div>

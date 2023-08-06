@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { login, logout, refresh, register } from "./operationsAuth";
 
 
+
 const handleRejected = (state, action) => {
   state.isAuthLoading = false;
   state.authError = action.payload;
@@ -14,6 +15,7 @@ const initialState = {
   isRefreshing: false,
   isAuthLoading: false,
   authError: null,
+
 };
 
 const authSlice = createSlice({
