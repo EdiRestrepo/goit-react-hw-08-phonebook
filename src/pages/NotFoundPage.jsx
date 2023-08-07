@@ -27,6 +27,7 @@ const NotFoundPage = () => {
       }}>
           <Card
               sx={{
+                  
                   transition: "0.5s",
                   display: "flex",
                   justifyContent: "center",
