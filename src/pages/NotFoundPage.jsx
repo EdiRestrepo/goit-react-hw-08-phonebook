@@ -1,5 +1,5 @@
 import { useLottie } from "lottie-react";
-import error404 from "../assets/img/error-404.json"
+import error404 from "../assets/img/error-404.json";
 import { Button, Card } from "@mui/material";
 
 const NotFoundPage = () => {
