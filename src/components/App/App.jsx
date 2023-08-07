@@ -3,13 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../../components/Layout"
 import { RestrictedRoute } from "../RestrictedRoute";
 import { PrivateRoute } from "../PrivateRoute";
+import NotFoundPage from "../../pages/NotFoundPage";
 
 const HomePage = lazy(() =>import("../../pages/Home"));
 const RegisterPage = lazy(() =>import("../../pages/Register"));
 const LoginPage = lazy(() =>import("../../pages/Login"));
 const ContactsPages = lazy(() =>import("../../pages/Contacts"));
 const CreateContactsPage = lazy(() => import("../../pages/CreateContact"));
-const NotFoundPage = lazy(()=> import("../../pages/NotFoundPage"))
+// const NotFoundPage = lazy(()=> import("../../pages/NotFoundPage"))
 
 
 const App = () => {
