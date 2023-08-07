@@ -1,19 +1,23 @@
 import { useLottie } from "lottie-react";
-import error404 from "../assets/img/error-404.json";
+import contacts from "../assets/img/contacts.json";
 import { Button, Card } from "@mui/material";
+import { useAuth } from "../hooks";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
   const lottieOptions = {
     loop: true,
     autoplay: true,
-    animationData: error404,
+    animationData: contacts,
   };
 
   const { View } = useLottie(lottieOptions);
 
   const handleNavigate = () => {
-    window.location.href =
-      "https://edirestrepo.github.io/goit-react-hw-08-phonebook/";
+    isLoggedIn ? navigate('/contacts') : navigate('/login')
   };
 
   return (
@@ -24,30 +28,36 @@ const Home = () => {
         alignItems: "center",
         flexDirection: "column",
         background: "white",
-        height: "100vh",
+
       }}
     >
-      <Card
-        sx={{
-          transition: "0.5s",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          "&:hover": {
-            transform: "scale(1.01)",
-          },
+      <h1>Save all your contacts in Phonebook</h1>
+      <Button
+        onClick={handleNavigate}
+        style={{
+          zIndex: "2"
         }}
+        variant="outlined"
       >
-        {View}
-        <Button
-          onClick={handleNavigate}
-          style={{ marginBottom: "3em" }}
-          variant="outlined"
+        GET STARTED
+      </Button>
+      <div style={{ width: "40%", marginTop: "-2.5em" }}>
+        <Card
+          sx={{
+            transition: "0.5s",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%", // Ensure the card takes the full width of the container
+            "&:hover": {
+              transform: "scale(1.01)",
+            },
+          }}
         >
-          Go Back
-        </Button>
-      </Card>
+          {View}
+        </Card>
+      </div>
     </div>
   );
 };

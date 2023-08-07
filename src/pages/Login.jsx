@@ -29,24 +29,10 @@ const Login = () => {
     console.log(credentials);
   };
 
-  // useEffect(() => {
-  //   if (formError) {
-  //     toast.error(formError);
-  //     dispatch(clearFormError());
-  //   }
-  // }, [dispatch, formError]);
-
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error);
-  //     dispatch(clearError());
-  //   }
-  // }, [dispatch, error]);
-
   return (
     <div
       style={{
-        height: "calc(100vh - 50px)",
+        // height: "calc(100vh - 50px)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

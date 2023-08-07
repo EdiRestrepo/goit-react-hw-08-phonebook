@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { clearError, clearFormError, setFormError } from "../redux/auth/slice";
-import { useEffect } from "react";
 import { register } from "../redux/auth/operationsAuth";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { selectIsAuthLoading } from "../redux/auth/selectorauth";
@@ -8,7 +6,6 @@ import { selectIsAuthLoading } from "../redux/auth/selectorauth";
 const Register = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsAuthLoading);
-  // const { formError, error, isLoading} = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,24 +25,10 @@ const Register = () => {
     console.log(credentials);
   };
 
-  // useEffect(() => {
-  //   if (formError) {
-  //     toast.error(formError);
-  //     dispatch(clearFormError());
-  //   }
-  // }, [dispatch, formError]);
-
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error);
-  //     dispatch(clearError());
-  //   }
-  // }, [dispatch, error]);
-
   return (
     <div
       style={{
-        height: "calc(100vh - 50px)",
+        // height: "calc(100vh - 50px)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

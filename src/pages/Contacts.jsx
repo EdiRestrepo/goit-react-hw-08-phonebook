@@ -16,7 +16,6 @@ const Contacts = () => {
   const token = useSelector(selectToken);
   const items = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
-  // const { isLoading, error } = useSelector((state) => state.contacts);
 
   return (
     <>
